@@ -13,7 +13,7 @@ Agents that work with markets need order books, trades and candles, and the exis
 * Symbol dialects. BTC-USDT on KuCoin and Coinbase, BTCUSDT on Binance aggregated in one canonical form (BASE-QUOTE). 
 * Timestamp units change per exchange and per endpoint. Binance is milliseconds, KuCoin stats and books are milliseconds, KuCoin trade history is nanoseconds, candles on KuCoin and Coinbase are seconds, Coinbase tickers are ISO strings. Every model comes out in ms since epoch.
 * Coinbase candle rows are [time, low, high, open, close, volume], newest first. That is the documented column order. KuCoin candles use [time, open, close, high, low, ...] instead. Positional mapping with tests, or the parser inverts candles.
-* Rate limits are per IP and agent tools wake up in bursts. The cache holds per-endpoint TTLs and collapses concurrent misses into one request (single-flight): five tools reading the same book in the same second cost one HTTP call. Failures are never cached and a caller whose leader raised retries immediately.
+* Rate limits are per IP and agent tools wake up in bursts. The cache holds per-endpoint TTLs and collapses concurrent misses into one request (single-flight) so that five tools reading the same book in the same second cost one HTTP call. Failures aren't cached and a caller whose leader raised retries immediately after.
 * Spread math runs on Decimal end to end.
 * Slim serializers keep exact decimal strings under short keys. Measured on the recorded fixtures: the 24h ticker drops from 605 bytes of raw envelope to 207 bytes (34%). On the already-compact book snapshot the size is roughly neutral; the win is one schema in three exchanges.
 
