@@ -33,7 +33,7 @@ svc.compare("BTC-USDT")   # same pair on every venue, executable spread from top
 As an MCP server:
 
 ```
-pip install "mcp[cli]"
+pip install -e ".[mcp]"
 python -m exchange_data_mcp.server
 ```
 
