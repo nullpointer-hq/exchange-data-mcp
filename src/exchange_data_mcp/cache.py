@@ -2,7 +2,7 @@
 
 Public endpoints rate-limit by IP, and agent tools are used in bursts so same second tool calls get aggregated into one.
 Concurrent misses collapse onto the leader's request.
-Also, a caller whose leader raised retries immediately
+Also, a caller whose leader raised retries immediately.
 """
 from __future__ import annotations
 
