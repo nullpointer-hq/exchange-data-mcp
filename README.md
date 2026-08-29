@@ -6,7 +6,7 @@ Works as an MCP server for agent clients or as a plain Python library with zero 
 
 ## Why this exists
 
-Agents that work with markets need order books, trades and candles, and the existing options hand the model raw exchange JSON. Raw payloads often carry additional useless stuff the model doesn't read, while this option doesn't, and on top of that it unifies info across the exchanges. This package normalizes the dialects once then serializes them more easily.
+Agents that work with markets need order books, trades and candles, and the existing options hand the model raw exchange JSON. Raw payloads often carry additional useless stuff the model doesn't read, while this option doesn't. and on top of that it unifies info across exchanges. This package normalizes the dialects once then serializes them more easily.
 
 ## Notable stuff about it:
 
